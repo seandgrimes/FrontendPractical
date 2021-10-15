@@ -4,4 +4,5 @@ export interface Order {
     symbol: string,
     timestamp: number,
     tradeType: string
+    total: number;
 }

@@ -1,7 +1,13 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { Order } from '../order-list/orders.model';
 
 import { addOrder } from './orders.actions';
-import { Order } from '../order-list/orders.model';
+import { State } from './orders.state';
+
+// export const initialState: State = {
+//     orders: [],
+//     averageOrderPrice: 0
+// }
 
 export const initialState: ReadonlyArray<Order> = [];
 

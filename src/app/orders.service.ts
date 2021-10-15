@@ -27,14 +27,14 @@ export class OrdersService {
     start() {
         this.pubnub.addListener({
             message: messageEvent => {
-              console.log("Message received!");
               const message = messageEvent.message;
               const order: Order = {
                   bidPrice: message.bid_price,
                   orderQuantity: message.order_quantity,
                   symbol: message.symbol,
                   timestamp: message.timestamp,
-                  tradeType: message.trade_type
+                  tradeType: message.trade_type,
+                  total: message.bid_price * message.order_quantity  
               };
 
               // TODO: Generate an event that we could subscribe to?

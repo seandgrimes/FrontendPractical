@@ -1,4 +1,22 @@
-<p>Orders List</p>
-<div *ngFor="let order of orders$ | async">
-    <div>{{order.symbol}}</div>
+<h2>Orders List</h2>
+
+<div>
+    Average Order Price: {{ averageOrderPrice$ | async }}
 </div>
+
+<table>
+    <tr>
+        <th>Symbol</th>
+        <th>Trade Type</th>
+        <th>Bid Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    <tr *ngFor="let order of orders$ | async">
+        <td>{{order.symbol}}</td>
+        <td>{{order.tradeType}}</td>
+        <td>{{order.bidPrice}}</td>
+        <td>{{order.orderQuantity}}</td>
+        <td>{{order.total}}</td>
+    </tr>
+</table>
