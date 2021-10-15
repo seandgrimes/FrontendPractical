@@ -13,5 +13,5 @@ export const initialState: ReadonlyArray<Order> = [];
 
 export const ordersReducer = createReducer(
     initialState,
-    on(addOrder, (state, { order }) => [...state, order])
+    on(addOrder, (state, { order }) => [...state, order].slice(-20))
 );

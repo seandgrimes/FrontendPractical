@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { scan } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Order } from './orders.model';
 import { State } from '../state/orders.state';
@@ -16,15 +15,7 @@ export class OrderListComponent {
   averageOrderPrice$: Observable<number>;
 
   constructor(private store: Store<State>) {
-    this.orders$ = store.select(selectOrders)
-      .pipe(
-        scan<Order[], Order[]>((acc, val) => {
-          // Keep track of the last 20 trades
-          acc.push(...val);
-          return acc.slice(-20); 
-        }, [])
-      );
-
+    this.orders$ = store.select(selectOrders);
     this.averageOrderPrice$ = store.select(selectOrderAverage);
   }
 }
